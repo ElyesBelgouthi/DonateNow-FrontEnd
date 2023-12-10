@@ -1,8 +1,27 @@
+import { motion } from "framer-motion";
+
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+};
+
 const Button = (props) => {
   return (
-    <button type={props.type} className="button--1">
+    <motion.button
+      variants={buttonVariants}
+      whileHover="hover"
+      type={props.type}
+      onClick={props.onClick}
+      className="button--1"
+    >
       {props.children}
-    </button>
+    </motion.button>
   );
 };
 

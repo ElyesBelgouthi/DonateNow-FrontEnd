@@ -26,7 +26,15 @@ body {
   background: url(../src/assets/bg.jpg);
   background-position-y: center;
   background-size: cover;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.main--root {
+  margin-top: 90px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 90px);
 }
 
 .button--1 {
@@ -48,6 +56,7 @@ body {
 .nav--header {
   height: 80px;
   width: 100%;
+  position: fixed;
   padding: 10px 30px;
   display: flex;
   align-items: center;
@@ -76,6 +85,11 @@ body {
 .nav--header a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.87);
+}
+
+.nav--header a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 .nav--header a.active {
@@ -121,14 +135,42 @@ body {
 
 /* Home Page */
 .main--section {
-  height: 720px;
-  width: 720px;
-  margin-left: 150px;
+  width: 100%;
+  height: 90%;
+  padding-left: 150px;
+  margin-top: 50px;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.text--content {
+  max-width: 50%;
+  max-height: 100%;
+}
+
+.image--content {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  margin-right: 80px;
+}
+
+.image--content img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  margin-right: 150px;
   margin-top: 50px;
 }
 
 .main--section--smaller {
-  margin-top: 100px;
+  width: 100%;
+  padding-left: 150px;
+  height: 90%;
+  margin-top: 60px;
+  overflow-y: hidden;
+  display: flex;
 }
 
 .home--title h2 {
@@ -155,5 +197,33 @@ body {
 
 .collaborators--section {
   width: 100%;
-  margin: 30px auto 40px;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.collaborators--section h2 {
+  margin: 0 auto;
+  font-size: 50px;
+}
+
+.collaborators--items {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.collaborators--item {
+  flex: 1 0 calc(25% - 20px);
+  max-width: calc(25% - 90px);
+  width: 300px;
+}
+
+.collaborators--item img {
+  cursor: grab;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
