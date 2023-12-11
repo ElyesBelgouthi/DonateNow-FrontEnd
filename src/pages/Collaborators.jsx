@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
 
 const DUMMY_COLLABORATORS = [
   {
@@ -55,10 +54,6 @@ const itemVariants = {
 };
 
 const CollaboratorsPage = () => {
-  useEffect(() => {
-    window.scrollTo(0.0);
-  }, []);
-
   return (
     <motion.section
       variants={containerVariants}
