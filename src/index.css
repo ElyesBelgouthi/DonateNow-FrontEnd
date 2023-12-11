@@ -20,6 +20,34 @@ body {
   overflow: hidden;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #757575; /* Color of the scrollbar handle */
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Color of the scrollbar track */
+  border-radius: 8px;
+}
+
+/* Right margin for a centered appearance */
+::-webkit-scrollbar-corner {
+  background-color: #f5f5f5; /* Color of the scrollbar corner (when both vertical and horizontal) */
+  display: none; /* Hide the scrollbar corner */
+}
+
 .root--layout {
   height: 100vh;
   width: 100vw;
@@ -170,6 +198,7 @@ body {
   height: 90%;
   margin-top: 60px;
   overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
 }
 

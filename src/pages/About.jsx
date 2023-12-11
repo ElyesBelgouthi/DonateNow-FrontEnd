@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+
 import Button from "../UI/Button";
 import abouOubayda from "../assets/abou-oubayda.png";
 import children from "../assets/children.png";
@@ -26,31 +28,92 @@ const ALL_CONTENT = [
   },
 ];
 
+const textContainer = {
+  hidden: {
+    x: -300,
+  },
+  visible: {
+    x: 0,
+    transition: {
+      duration: 1.5,
+      type: "spring",
+      mass: 0.4,
+      damping: 8,
+      when: "beforeChildren",
+      staggerChildren: 0.4,
+      stiffness: 120,
+    },
+  },
+};
+
+const imageContainer = {
+  hidden: {
+    x: 300,
+  },
+  visible: {
+    x: 0,
+    transition: {
+      duration: 1.5,
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
+const firstChildVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
 const AboutPage = () => {
   const [index, setIndex] = useState(0);
 
   return (
     <section className="main--section--smaller">
-      <div className="text--content">
-        <div className="home--title">
+      <motion.div
+        key={`text-${index}`}
+        className="text--content"
+        variants={textContainer}
+        animate="visible"
+        initial="hidden"
+      >
+        <motion.div className="home--title" variants={firstChildVariants}>
           <h2> {ALL_CONTENT[index].title}</h2>
-        </div>
-        <p className="home--description">{ALL_CONTENT[index].description}</p>
+        </motion.div>
+        <motion.p
+          className="home--description"
+          variants={firstChildVariants}
+          transition={{ delay: 0.5 }}
+        >
+          {ALL_CONTENT[index].description}
+        </motion.p>
         {index !== ALL_CONTENT.length - 1 && (
-          <Button
-            type="button"
-            className="button--1"
-            onClick={() => {
-              setIndex((prevIndex) => prevIndex + 1);
-            }}
-          >
-            Continue
-          </Button>
+          <motion.div variants={firstChildVariants}>
+            <Button
+              type="button"
+              className="button--1"
+              onClick={() => {
+                setIndex((prevIndex) => prevIndex + 1);
+              }}
+            >
+              Continue
+            </Button>
+          </motion.div>
         )}
-      </div>
-      <div className="image--content">
+      </motion.div>
+      <motion.div
+        key={`image-${index}`}
+        className="image--content"
+        variants={imageContainer}
+        animate="visible"
+        initial="hidden"
+      >
         <img src={ALL_CONTENT[index].src} />
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+
 const DUMMY_COLLABORATORS = [
   {
     id: 1,
@@ -25,18 +28,58 @@ const DUMMY_COLLABORATORS = [
   },
 ];
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      stiffness: 120,
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+    },
+  },
+  exit: {
+    x: "-100vw",
+    transition: { ease: "easeInOut" },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const CollaboratorsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0.0);
+  }, []);
+
   return (
-    <section className="collaborators--section">
+    <motion.section
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="collaborators--section"
+    >
       <h2>OUR COLLABORATORS</h2>
       <div className="collaborators--items">
         {DUMMY_COLLABORATORS.map((item) => (
-          <div key={item.id} className="collaborators--item">
+          <motion.div
+            key={item.id}
+            variants={itemVariants}
+            className="collaborators--item"
+          >
             <img src={item.src} alt={"collab" + item.id} />
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
