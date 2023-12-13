@@ -79,6 +79,19 @@ body {
   margin-top: 30px;
 }
 
+.button--2 {
+  display: inline-block;
+  padding: 11px 30px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #242424;
+  border: 2px solid #242424;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
 /* MainNavigation */
 
 .nav--header {
@@ -255,4 +268,94 @@ body {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+/* Card Styling */
+.card--container {
+  width: 250px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: grab;
+}
+
+.card--image {
+  width: 250px;
+  height: 50%;
+}
+
+.card--image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card--text {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.card--text h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.card--text p {
+  margin: 10px 0;
+  font-size: 1em;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card--price {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #555;
+  text-align: right;
+}
+
+.card--adding {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card--adding input {
+  appearance: none;
+  text-align: center;
+  border: 1px solid #ddd;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: 700;
+  width: 50px;
+  height: 30px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card--adding input:focus {
+  border-color: #1a405a;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }

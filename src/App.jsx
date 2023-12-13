@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         path: "boycott",
         element: <BoycottPage />,
       },
+      {
+        path: "products",
+        element: <ProductsPage />,
+      },
     ],
   },
 ]);

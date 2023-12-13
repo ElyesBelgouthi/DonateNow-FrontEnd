@@ -19,6 +19,7 @@ const Button = (props) => {
       type={props.type}
       onClick={props.onClick}
       className="button--1"
+      style={{ color: props.color }}
     >
       {props.children}
     </motion.button>

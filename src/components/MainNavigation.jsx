@@ -71,7 +71,12 @@ const MainNavigation = () => {
             </NavLink>
           </motion.li>
           <motion.li variants={hoverElements} whileHover="hover">
-            <a>PRODUCTS</a>
+            <NavLink
+              to="/products"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
+              PRODUCTS
+            </NavLink>
           </motion.li>
         </motion.ul>
       </nav>
