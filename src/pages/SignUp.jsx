@@ -1,3 +1,5 @@
+import Button from "../UI/Button";
+
 const SignUpPage = () => {
   return (
     <div className="signup-container">
@@ -15,6 +17,24 @@ const SignUpPage = () => {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="fullName">Full Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="fullName"
+                placeholder="Full Name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phoneNumber">Phone Number</label>
+              <input
+                type="tel"
+                className="form-control"
+                id="phoneNumber"
+                placeholder="Phone number"
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -23,14 +43,9 @@ const SignUpPage = () => {
                 placeholder="Password"
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Sign Up
-            </button>
+            <Button type="submit">Sign Up</Button>
           </form>
         </div>
-      </div>
-      <div className="signup-image">
-        <img src="/path/to/your/image.jpg" alt="Signup" />
       </div>
     </div>
   );

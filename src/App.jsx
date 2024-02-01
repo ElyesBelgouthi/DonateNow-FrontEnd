@@ -8,6 +8,8 @@ import CollaboratorsPage from "./pages/Collaborators";
 import BoycottPage from "./pages/Boycott";
 import ProductsPage from "./pages/Products";
 import SignUpPage from "./pages/Signup";
+import CartPage from "./pages/Payement";
+import PaymentPage from "./pages/Payement";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignUpPage />,
+      },
+      {
+        path: "payment",
+        element: <PaymentPage />,
       },
     ],
   },
