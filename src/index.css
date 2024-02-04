@@ -439,3 +439,92 @@ body {
 .btn-primary:hover {
   background-color: #0056b3;
 }
+
+.pcard--container {
+  padding: 10px auto;
+  width: 600px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  color: #242424;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  background: #dcdce0;
+  box-shadow: 9px 9px 12px #b9b9bc;
+}
+
+.pcard--image {
+  height: 90px;
+  width: 90px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.pcard--image-content {
+  border-radius: 20px;
+}
+
+.pcard--total {
+  position: absolute;
+  left: 400px;
+  font-size: 20px;
+}
+
+.pcard--adding {
+  position: absolute;
+  left: 300px;
+  margin-top: -10px;
+}
+
+.pcard--text {
+  position: absolute;
+  left: 120px;
+}
+
+.pcard--text h3 {
+  margin: 2px 0 -10px;
+}
+
+.pcard--text p {
+  font-size: small;
+}
+
+.pcard--delete {
+  position: absolute;
+  font-size: 25px;
+  right: 45px;
+  cursor: pointer;
+}
+
+.payment--container {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #242424;
+
+  width: 90vw;
+  margin: 20px auto;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.order--details {
+  padding-left: 20px;
+  width: 45%;
+}
+
+.order--products {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  height: 450px;
+}
+
+.payment--details {
+}
