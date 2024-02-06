@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import Button from "../../UI/Button";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
   hidden: {
@@ -26,6 +28,15 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const firstChildVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
 const DonationTypePage = () => {
   return (
     <motion.section
@@ -45,9 +56,13 @@ const DonationTypePage = () => {
           <div class="donation-type-back">
             <h3>Donate Money</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              veniam distinctio .
+              Your monetary donation directly aids those affected by the crisis
+              in Palestine, providing vital assistance and hope during these
+              challenging times.
             </p>
+            <Link to="money" className="donation--type--btn">
+              <Button>Continue</Button>
+            </Link>
           </div>
         </motion.div>
         <motion.div class="donation-type-card" variants={itemVariants}>
@@ -57,9 +72,12 @@ const DonationTypePage = () => {
           <div class="donation-type-back">
             <h3>Donate Products</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              veniam distinctio .
+              Your generous donations of essential products are vital for the
+              people of Gaza who are in urgent need.
             </p>
+            <Link to="products" className="donation--type--btn">
+              <Button>Continue</Button>
+            </Link>
           </div>
         </motion.div>
       </div>

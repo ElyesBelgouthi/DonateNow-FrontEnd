@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import Button from "../UI/Button";
 import Flag from "../UI/Flag";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
   hidden: {
@@ -13,7 +14,7 @@ const containerVariants = {
       delay: 0.5,
       duration: 0.55,
       when: "beforeChildren",
-      staggerChildren: 0.4,
+      staggerChildren: 0.8,
     },
   },
   exit: {
@@ -28,6 +29,9 @@ const firstChildVariants = {
   },
   visible: {
     opacity: 1,
+    transition: {
+      duration: 1,
+    },
   },
 };
 
@@ -55,9 +59,11 @@ const HomePage = () => {
           longstanding hardships.
         </motion.p>
         <motion.div variants={firstChildVariants}>
-          <Button type="button" className="button--1">
-            Donate
-          </Button>
+          <Link to="/donation">
+            <Button type="button" className="button--1">
+              Donate
+            </Button>
+          </Link>
         </motion.div>
       </div>
       <div className="image--content">

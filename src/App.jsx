@@ -12,6 +12,8 @@ import PaymentPage from "./pages/Donation/Payement";
 import DonationPage from "./pages/Donation/Donation";
 import MoneyDonationPage from "./pages/Donation/MoneyDonation";
 import DonationTypePage from "./pages/Donation/DonationType";
+import MoneyDonationModal from "./components/MoneyDonationModal";
+import { useState } from "react";
 
 const router = createBrowserRouter([
   {
