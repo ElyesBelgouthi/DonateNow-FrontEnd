@@ -72,10 +72,10 @@ const MainNavigation = () => {
           </motion.li>
           <motion.li variants={hoverElements} whileHover="hover">
             <NavLink
-              to="/products"
+              to="/donation"
               className={({ isActive }) => (isActive ? "active" : undefined)}
             >
-              PRODUCTS
+              DONATION
             </NavLink>
           </motion.li>
         </motion.ul>

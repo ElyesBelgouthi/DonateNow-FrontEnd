@@ -1,8 +1,8 @@
-import DUMMY_PRODUCTS from "../DUMMY-CONTENT/DUMMY_PRODUCTS";
-import ProductCardPayment from "../components/ProductCardPayment";
-import visa from "../assets/Visa_Inc._logo.svg.png";
-import mastercard from "../assets/MasterCard_Logo.svg.png";
-import rupay from "../assets/1200px-Rupay-Logo.png";
+import DUMMY_PRODUCTS from "../../DUMMY-CONTENT/DUMMY_PRODUCTS";
+import ProductCardPayment from "../../components/ProductCardPayment";
+import visa from "../../assets/Visa_Inc._logo.svg.png";
+import mastercard from "../../assets/MasterCard_Logo.svg.png";
+import rupay from "../../assets/1200px-Rupay-Logo.png";
 import { useState } from "react";
 
 const PaymentPage = () => {

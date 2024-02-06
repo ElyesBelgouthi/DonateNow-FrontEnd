@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../../components/ProductCard";
 
-import DUMMY_PRODUCTS from "../DUMMY-CONTENT/DUMMY_PRODUCTS";
+import DUMMY_PRODUCTS from "../../DUMMY-CONTENT/DUMMY_PRODUCTS";
 import { useState } from "react";
 
 const buttonVariants = {

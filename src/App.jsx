@@ -6,10 +6,12 @@ import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 import CollaboratorsPage from "./pages/Collaborators";
 import BoycottPage from "./pages/Boycott";
-import ProductsPage from "./pages/Products";
+import ProductsPage from "./pages/Donation/Products";
 import SignUpPage from "./pages/Signup";
-import CartPage from "./pages/Payement";
-import PaymentPage from "./pages/Payement";
+import PaymentPage from "./pages/Donation/Payement";
+import DonationPage from "./pages/Donation/Donation";
+import MoneyDonationPage from "./pages/Donation/MoneyDonation";
+import DonationTypePage from "./pages/Donation/DonationType";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +35,22 @@ const router = createBrowserRouter([
         element: <BoycottPage />,
       },
       {
-        path: "products",
-        element: <ProductsPage />,
+        path: "donation",
+        element: <DonationPage />,
+        children: [
+          {
+            path: "",
+            element: <DonationTypePage />,
+          },
+          {
+            path: "money",
+            element: <MoneyDonationPage />,
+          },
+          {
+            path: "products",
+            element: <ProductsPage />,
+          },
+        ],
       },
       {
         path: "signup",
