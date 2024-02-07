@@ -2,6 +2,8 @@ import { AnimatePresence } from "framer-motion";
 import CurrencyInput from "react-currency-input-field";
 import Button from "../UI/Button";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ModalVariants = {
   hidden: { opacity: 0, y: -900 },
@@ -59,6 +61,17 @@ const MoneyDonationModal = (props) => {
               variants={firstChildVariants}
               className="money--donation--modal--top"
             >
+              <motion.div
+                onClick={() => {
+                  props.setShowMoneyModal(false);
+                }}
+                className="modal-icon"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FontAwesomeIcon icon={faCircleXmark} />
+              </motion.div>
+
               <motion.h3 variants={firstChildVariants}>Donate now</motion.h3>
             </motion.div>
             <div className="money--donation--modal--bot">

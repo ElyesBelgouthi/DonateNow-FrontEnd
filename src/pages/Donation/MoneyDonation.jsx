@@ -25,7 +25,7 @@ const containerVariants = {
 };
 
 const MoneyDonationPage = () => {
-  const [showMoneyModal, setShowMoneyModal] = useState(true);
+  const [showMoneyModal, setShowMoneyModal] = useState(false);
 
   return (
     <>
@@ -43,7 +43,12 @@ const MoneyDonationPage = () => {
         <h2>DONATE MONEY</h2>
         <p>Be a Hero, Make a Difference Today</p>
         <div className="money--donation--cards--container">
-          <div className="money--donation--card--container">
+          <div
+            className="money--donation--card--container"
+            onClick={() => {
+              setShowMoneyModal(true);
+            }}
+          >
             <MoneyDonationCard />
           </div>
           <div className="money--donation--card--container">
