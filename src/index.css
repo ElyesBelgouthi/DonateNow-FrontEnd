@@ -20,6 +20,17 @@ body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
@@ -65,6 +76,30 @@ body {
   height: calc(100vh - 90px);
 }
 
+.connection--root--layout {
+  height: 100vh;
+  width: 100vw;
+  background: url(../src/assets/bg2.jpg);
+  background-position-y: center;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.connection--main--root {
+  position: absolute;
+  right: 0;
+  width: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  background: rgba(5, 5, 54, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
 .button--1 {
   display: inline-block;
   padding: 15px 60px;
@@ -92,6 +127,22 @@ body {
   text-decoration: none;
 }
 
+.login-btn {
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-btn--container {
+}
+
 /* MainNavigation */
 
 .nav--header {
@@ -101,12 +152,12 @@ body {
   padding: 10px 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .logo--div {
   height: 80px;
-  width: 140px;
+  width: 120px;
   cursor: pointer;
 }
 
@@ -144,7 +195,7 @@ body {
   cursor: pointer;
 }
 
-.ham--div {
+.connection--div {
   font-size: 25px;
   height: 40px;
   width: 40px;
@@ -381,63 +432,48 @@ body {
   border: 1px solid #ccc;
 }
 /* Signup.css */
-
-.signup-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
 .signup-content {
-  display: flex;
-  align-items: center;
+  padding-top: 90px;
+  text-align: center;
+  width: 100%;
 }
 
 .signup-form {
-  background: rgba(38, 169, 197, 0.55);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
+  color: #ccc;
+  text-align: left;
 }
 
 .signup-form h2 {
   margin-bottom: 20px;
-  color: #333;
+}
+
+.connection--btn--container {
+  text-align: center;
+}
+
+.connection--change--method {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.connection--change--method a:hover {
+  color: #f8d743;
 }
 
 .form-group {
+  padding-left: 80px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .form-control {
-  width: 100%;
+  display: block;
+  width: 70%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: inherit;
-}
-
-.signup-form label {
-  color: #242424;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
 }
 
 .pcard--container {
@@ -510,12 +546,14 @@ body {
   margin: 20px auto;
   padding: 10px 20px;
   display: flex;
+  gap: 40px;
   flex-direction: row;
 }
 
 .order--details {
   padding-left: 20px;
   width: 45%;
+  height: 540px;
 }
 
 .order--products {
@@ -523,10 +561,70 @@ body {
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
-  height: 450px;
+  overflow-x: visible;
+  height: 300px;
 }
 
-.payment--details {
+.order--subtotals {
+  padding: 10px 20px;
+}
+
+.order--subtotals h3 {
+  position: relative;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.order--subtotals span {
+  position: absolute;
+  right: 0;
+  font-size: 25px;
+}
+
+.order--total {
+  color: #ccc;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.order--total h3 {
+  height: 60px;
+  background: linear-gradient(to top left, rgb(47, 137, 160), rgb(45, 34, 107));
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  font-size: 35px;
+  position: relative;
+  width: 90%;
+  padding: 10px 10px;
+}
+
+.order--total span {
+  font-size: 35px;
+  position: absolute;
+  right: 20px;
+}
+
+.order--total h4 {
+  background: linear-gradient(to top left, rgb(47, 137, 160), rgb(45, 34, 107));
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  font-size: 20px;
+  height: 60px;
+
+  padding: 10px 10px;
+  text-align: center;
 }
 
 /* Donation Types Page */
@@ -780,6 +878,19 @@ body {
   width: 90%;
   height: 40px;
   font-size: 40px;
+}
+
+#input-card {
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 25%;
+  height: 40px;
+  font-size: 20px;
+  position: absolute;
+  right: 100px;
 }
 
 .modal-icon {

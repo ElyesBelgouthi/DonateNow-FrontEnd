@@ -8,14 +8,29 @@ import CollaboratorsPage from "./pages/Collaborators";
 import BoycottPage from "./pages/Boycott";
 import ProductsPage from "./pages/Donation/Products";
 import SignUpPage from "./pages/Signup";
-import PaymentPage from "./pages/Donation/Payement";
 import DonationPage from "./pages/Donation/Donation";
 import MoneyDonationPage from "./pages/Donation/MoneyDonation";
 import DonationTypePage from "./pages/Donation/DonationType";
-import MoneyDonationModal from "./components/MoneyDonationModal";
-import { useState } from "react";
+import DonationCartPage from "./pages/Donation/DonationCart";
+import PaymentPage from "./pages/Donation/Payment";
+import ConnectionRootLayout from "./pages/ConnectionRoot";
+import LoginPage from "./pages/Login";
 
 const router = createBrowserRouter([
+  {
+    path: "/auth",
+    element: <ConnectionRootLayout />,
+    children: [
+      {
+        path: "signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+    ],
+  },
   {
     path: "/",
     element: <RootLayout />,
@@ -52,15 +67,15 @@ const router = createBrowserRouter([
             path: "products",
             element: <ProductsPage />,
           },
+          {
+            path: "cart",
+            element: <DonationCartPage />,
+          },
+          {
+            path: "payment",
+            element: <PaymentPage />,
+          },
         ],
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
-      },
-      {
-        path: "payment",
-        element: <PaymentPage />,
       },
     ],
   },

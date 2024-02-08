@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Button from "../UI/Button";
+
 const containerVariants = {
   hidden: {
     opacity: 0,
@@ -17,7 +18,7 @@ const containerVariants = {
   },
 };
 
-const SignUpPage = () => {
+const LoginPage = () => {
   return (
     <motion.div
       className="signup-content"
@@ -25,7 +26,7 @@ const SignUpPage = () => {
       animate="visible"
       initial="hidden"
     >
-      <h2>Create an Account</h2>
+      <h2>Login</h2>
       <div className="signup-form">
         <form>
           <div className="form-group">
@@ -35,15 +36,6 @@ const SignUpPage = () => {
               className="form-control"
               id="email"
               placeholder="Enter email"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="fullname">Full Name</label>
-            <input
-              type="password"
-              className="form-control"
-              id="fullname"
-              placeholder="Full name"
             />
           </div>
 
@@ -57,13 +49,13 @@ const SignUpPage = () => {
             />
           </div>
           <div className="connection--btn--container">
-            <Button type="submit">Sign Up</Button>
+            <Button type="submit">Login</Button>
           </div>
         </form>
         <div className="connection--change--method">
-          Already have an account?
-          <motion.p whileHover={{ scale: 1.2 }}>
-            <Link to="/auth/login">Clink here</Link>
+          Create an account?
+          <motion.p whileHover={{ scale: 1.2, color: "#fd0065" }}>
+            <Link to="/auth/signup">Clink here</Link>
           </motion.p>
         </div>
       </div>
@@ -71,4 +63,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default LoginPage;

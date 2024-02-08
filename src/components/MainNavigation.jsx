@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import logo from "../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import LoginButton from "../UI/LoginButton";
 
 const navElements = {
   hidden: {
@@ -80,9 +81,9 @@ const MainNavigation = () => {
           </motion.li>
         </motion.ul>
       </nav>
-      <div className="ham--div">
-        <FontAwesomeIcon icon={faBars} />
-      </div>
+      <Link to="auth/signup" className="login-btn--container">
+        <LoginButton>Connect</LoginButton>
+      </Link>
     </motion.header>
   );
 };
