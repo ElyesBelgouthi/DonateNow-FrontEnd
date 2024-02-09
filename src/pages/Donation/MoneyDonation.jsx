@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import MoneyDonationCard from "../../components/MoneyDonationCard";
 import { useState } from "react";
 import MoneyDonationModal from "../../components/MoneyDonationModal";
+import { useLoaderData } from "react-router-dom";
 
 const containerVariants = {
   hidden: {
@@ -25,14 +26,21 @@ const containerVariants = {
 };
 
 const MoneyDonationPage = () => {
+  const fundraisingOps = useLoaderData();
+
+  const [fundraisingModal, setFundraisingModal] = useState(null);
   const [showMoneyModal, setShowMoneyModal] = useState(false);
 
   return (
     <>
-      <MoneyDonationModal
-        showMoneyModal={showMoneyModal}
-        setShowMoneyModal={setShowMoneyModal}
-      />
+      {fundraisingModal && (
+        <MoneyDonationModal
+          showMoneyModal={showMoneyModal}
+          setShowMoneyModal={setShowMoneyModal}
+          fundraisingModal={fundraisingModal}
+          progress={fundraisingModal.progress}
+        />
+      )}
       <motion.section
         variants={containerVariants}
         initial="hidden"
@@ -43,23 +51,21 @@ const MoneyDonationPage = () => {
         <h2>DONATE MONEY</h2>
         <p>Be a Hero, Make a Difference Today</p>
         <div className="money--donation--cards--container">
-          <div
-            className="money--donation--card--container"
-            onClick={() => {
-              setShowMoneyModal(true);
-            }}
-          >
-            <MoneyDonationCard />
-          </div>
-          <div className="money--donation--card--container">
-            <MoneyDonationCard />
-          </div>
-          <div className="money--donation--card--container">
-            <MoneyDonationCard />
-          </div>
-          <div className="money--donation--card--container">
-            <MoneyDonationCard />
-          </div>
+          {fundraisingOps.map((fundraising) => (
+            <div
+              key={fundraising.id}
+              className="money--donation--card--container"
+              onClick={() => {
+                setShowMoneyModal(true);
+                setFundraisingModal(fundraising);
+              }}
+            >
+              <MoneyDonationCard
+                key={fundraising.id}
+                fundraising={fundraising}
+              />
+            </div>
+          ))}
         </div>
       </motion.section>
     </>

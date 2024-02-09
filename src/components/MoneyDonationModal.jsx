@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const ModalVariants = {
   hidden: { opacity: 0, y: -900 },
@@ -31,7 +32,10 @@ const firstChildVariants = {
 };
 
 const MoneyDonationModal = (props) => {
-  const progress = "45%";
+  const [donationAmount, setDonationAmount] = useState(0);
+
+  const fundraising = props.fundraisingModal;
+  const progress = parseInt(props.progress) + "%";
   const progressBarVariants = {
     hidden: {
       opacity: 0,
@@ -47,6 +51,33 @@ const MoneyDonationModal = (props) => {
       },
     },
   };
+
+  const handleDonate = () => {
+    const existingFundraisingOps =
+      JSON.parse(localStorage.getItem("FundraisingOps")) || [];
+
+    const existingIndex = existingFundraisingOps.findIndex(
+      (op) => op.id === fundraising.id
+    );
+
+    if (existingIndex !== -1) {
+      existingFundraisingOps[existingIndex].donationAmount = donationAmount;
+    } else {
+      existingFundraisingOps.push({
+        ...fundraising,
+        donationAmount: donationAmount,
+      });
+    }
+
+    localStorage.setItem(
+      "FundraisingOps",
+      JSON.stringify(existingFundraisingOps)
+    );
+
+    props.setShowMoneyModal(false);
+    setDonationAmount(0);
+  };
+
   return (
     <AnimatePresence>
       {props.showMoneyModal && (
@@ -60,6 +91,10 @@ const MoneyDonationModal = (props) => {
             <motion.div
               variants={firstChildVariants}
               className="money--donation--modal--top"
+              style={{
+                background: `linear-gradient(to top, rgba(0, 0, 0, 5), rgba(84, 21, 21, 0)),
+      url(${fundraising.imageUrl})`,
+              }}
             >
               <motion.div
                 onClick={() => {
@@ -72,14 +107,13 @@ const MoneyDonationModal = (props) => {
                 <FontAwesomeIcon icon={faCircleXmark} />
               </motion.div>
 
-              <motion.h3 variants={firstChildVariants}>Donate now</motion.h3>
+              <motion.h3 variants={firstChildVariants}>
+                {fundraising.title}
+              </motion.h3>
             </motion.div>
             <div className="money--donation--modal--bot">
               <motion.p variants={firstChildVariants}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia dolore quos nobis pariatur consequuntur a? Nam, iure
-                aperiam at repellendus quas reprehenderit ex porro facilis est
-                velit commodi quod nisi.
+                {fundraising.description}
               </motion.p>
               <motion.div
                 variants={firstChildVariants}
@@ -92,7 +126,7 @@ const MoneyDonationModal = (props) => {
                 ></motion.div>
               </motion.div>
               <motion.p variants={firstChildVariants}>
-                $500 raised of $1000 goal
+                ${fundraising.currentSum} raised of ${fundraising.goalSum} goal
               </motion.p>
 
               <motion.div
@@ -104,12 +138,14 @@ const MoneyDonationModal = (props) => {
                   id="input-example"
                   name="money"
                   placeholder="ex: $ 1 000,00"
-                  defaultValue={1000}
                   decimalsLimit={2}
+                  onValueChange={(value) =>
+                    setDonationAmount(parseFloat(value || 0))
+                  }
                 />
               </motion.div>
               <motion.div variants={firstChildVariants}>
-                <Button>Donate</Button>
+                <Button onClick={handleDonate}>Donate</Button>
               </motion.div>
             </div>
           </motion.div>

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import rice from "../assets/rice.jpg";
 
-const ProductCard = (props) => {
+const ProductCard = ({ product }) => {
   const [value, setValue] = useState(1);
   const handleChange = (event) => {
     let newValue = parseInt(event.target.value);
@@ -13,16 +12,41 @@ const ProductCard = (props) => {
     setValue(newValue);
   };
 
+  const handleDonate = () => {
+    const ProductCart = JSON.parse(localStorage.getItem("ProductCart")) || [];
+
+    const productIndex = ProductCart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (productIndex !== -1) {
+      ProductCart[productIndex].amount += value;
+    } else {
+      ProductCart.push({
+        ...product,
+        amount: value,
+      });
+    }
+
+    localStorage.setItem("ProductCart", JSON.stringify(ProductCart));
+
+    setValue(1);
+  };
+
   return (
     <div className="card--container">
       <div className="card--image">
-        <img src={rice} alt="rice" className="card--image-content" />
+        <img
+          src={product.imageUrl}
+          alt="rice"
+          className="card--image-content"
+        />
       </div>
       <div className="card--text">
-        <h3>{props.title}</h3>
+        <h3>{product.name}</h3>
         <p>
-          <span>Price per {props.measureUnit} </span>
-          <span className="card--price">{props.pricePerUnit}$</span>
+          <span>Price per {product.measureUnit} </span>
+          <span className="card--price">{product.price}$</span>
         </p>
         <div className="card--adding">
           <input
@@ -34,7 +58,7 @@ const ProductCard = (props) => {
             id="product-quantity"
             onChange={handleChange}
           />
-          <button type="button" className="button--2">
+          <button type="button" className="button--2" onClick={handleDonate}>
             Donate
           </button>
         </div>

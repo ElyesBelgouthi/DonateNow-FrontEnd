@@ -4,36 +4,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import CurrencyInput from "react-currency-input-field";
 
-const MoneyCartCard = (props) => {
-  const [value, setValue] = useState(10000);
-  const handleChange = (event) => {
-    let newValue = event.target.value;
-    setValue(newValue);
+const MoneyCartCard = ({ fundraising, onDelete }) => {
+  const formatTitle = (title) => {
+    const words = title.split(" ");
+    if (words.length > 3) {
+      return words.slice(0, 3).join(" ") + "...";
+    }
+    return title;
+  };
+
+  const handleDelete = (event) => {
+    onDelete(fundraising.id);
   };
 
   return (
     <div className="pcard--container">
       <div className="pcard--image">
         <img
-          src={rice}
-          alt="rice"
+          src={fundraising.imageUrl}
+          alt={fundraising.title}
           className="card--image-content pcard--image-content"
         />
       </div>
       <div className="pcard--text">
-        <h3>{props.title}</h3>
+        <h3>{formatTitle(fundraising.title)}</h3>
       </div>
 
       <CurrencyInput
         prefix="$"
         id="input-card"
         name="money"
-        defaultValue={value}
+        defaultValue={fundraising.donationAmount}
         decimalsLimit={2}
-        onChange={handleChange}
+        disabled={true}
       />
 
-      <div className="pcard--delete">
+      <div className="pcard--delete" onClick={() => handleDelete()}>
         <FontAwesomeIcon icon={faTrashCan} />
       </div>
     </div>

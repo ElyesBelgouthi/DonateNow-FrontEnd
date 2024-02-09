@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 import ProductCard from "../../components/ProductCard";
 
-import DUMMY_PRODUCTS from "../../DUMMY-CONTENT/DUMMY_PRODUCTS";
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const buttonVariants = {
   hover: {
@@ -43,11 +43,14 @@ const itemVariants = {
 };
 
 const ProductsPage = () => {
+  const products = useLoaderData();
+
   const [activeCategory, setActiveCategory] = useState(null);
 
   const handleClick = (category) => {
     setActiveCategory((prev) => (prev == category ? null : category));
   };
+  console.log(products);
 
   return (
     <motion.section
@@ -100,13 +103,9 @@ const ProductsPage = () => {
         </ul>
       </motion.div>
       <div className="collaborators--items">
-        {DUMMY_PRODUCTS.map((item) => (
-          <motion.div key={item.id} variants={itemVariants}>
-            <ProductCard
-              title={item.title}
-              measureUnit={item.measureUnit}
-              pricePerUnit={item.pricePerUnit}
-            />
+        {products.map((product) => (
+          <motion.div key={product.id} variants={itemVariants}>
+            <ProductCard product={product} />
           </motion.div>
         ))}
       </div>

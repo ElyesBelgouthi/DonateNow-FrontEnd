@@ -35,10 +35,10 @@ const firstChildVariants = {
   },
 };
 
-const MoneyDonationCard = () => {
+const MoneyDonationCard = ({ fundraising }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const progress = "45%";
+  const progress = parseInt(fundraising.progress) + "%";
   const progressBarVariants = {
     hidden: {
       opacity: 0,
@@ -72,16 +72,21 @@ const MoneyDonationCard = () => {
       animate={mainControls}
       whileHover="hover"
       whileTap={{ scale: 0.97 }}
+      style={{
+        background: `linear-gradient(
+          to top left,
+          rgba(0, 0, 0, 5),
+          rgba(84, 21, 21, 0)
+        ),
+        url(${fundraising.imageUrl})`,
+      }}
     >
       <motion.div
         variants={firstChildVariants}
         className="money-donation-card--text"
       >
-        <h3 variants={firstChildVariants}>Donate Now</h3>
-        <p variants={firstChildVariants}>
-          Your contribution helps those in need. Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. At ut consectetur
-        </p>
+        <h3 variants={firstChildVariants}>{fundraising.title}</h3>
+        <p variants={firstChildVariants}>{fundraising.description}</p>
       </motion.div>
       <motion.div variants={firstChildVariants} className="progress-bar">
         <motion.div
@@ -91,7 +96,7 @@ const MoneyDonationCard = () => {
         ></motion.div>
       </motion.div>
       <motion.p variants={firstChildVariants}>
-        $500 raised of $1000 goal
+        ${fundraising.currentSum} raised of ${fundraising.goalSum} goal
       </motion.p>
     </motion.div>
   );

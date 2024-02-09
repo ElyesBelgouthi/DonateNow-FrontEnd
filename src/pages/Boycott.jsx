@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLoaderData } from "react-router-dom";
 
 const DUMMY_BOYCOTT = [
   {
@@ -79,6 +80,8 @@ const itemVariants = {
 };
 
 const BoycottPage = () => {
+  const boycotts = useLoaderData();
+
   return (
     <motion.section
       variants={containerVariants}
@@ -89,13 +92,13 @@ const BoycottPage = () => {
     >
       <h2>BOYCOTT</h2>
       <div className="collaborators--items">
-        {DUMMY_BOYCOTT.map((item) => (
+        {boycotts.map((boycott) => (
           <motion.div
-            key={item.id}
+            key={boycott.id}
             variants={itemVariants}
             className="collaborators--item"
           >
-            <img src={item.src} alt={"boycott" + item.id} />
+            <img src={boycott.imageUrl} alt={boycott.name} />
           </motion.div>
         ))}
       </div>

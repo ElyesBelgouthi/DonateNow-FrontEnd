@@ -7,33 +7,46 @@ import AboutPage from "./pages/About";
 import CollaboratorsPage from "./pages/Collaborators";
 import BoycottPage from "./pages/Boycott";
 import ProductsPage from "./pages/Donation/Products";
-import SignUpPage from "./pages/Signup";
+import SignUpPage, { signUpAction } from "./pages/Signup";
 import DonationPage from "./pages/Donation/Donation";
 import MoneyDonationPage from "./pages/Donation/MoneyDonation";
 import DonationTypePage from "./pages/Donation/DonationType";
 import DonationCartPage from "./pages/Donation/DonationCart";
 import PaymentPage from "./pages/Donation/Payment";
 import ConnectionRootLayout from "./pages/ConnectionRoot";
-import LoginPage from "./pages/Login";
+import LoginPage, { loginAction } from "./pages/Login";
+import { API_BASE_URL } from "./Context";
+import {
+  checkAuthLoaderForConnection,
+  getAuthToken,
+  logout,
+} from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/auth",
     element: <ConnectionRootLayout />,
+    loader: checkAuthLoaderForConnection,
     children: [
       {
         path: "signup",
         element: <SignUpPage />,
+        action: signUpAction,
       },
       {
         path: "login",
         element: <LoginPage />,
+        action: loginAction,
       },
     ],
   },
   {
     path: "/",
     element: <RootLayout />,
+    id: "root",
+    loader: () => {
+      return getAuthToken();
+    },
     children: [
       {
         index: true,
@@ -50,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "boycott",
         element: <BoycottPage />,
+        loader: async () => {
+          const response = await fetch(API_BASE_URL + "Boycott");
+          if (!response.ok) {
+          } else {
+            const resData = await response.json();
+            return resData;
+          }
+        },
       },
       {
         path: "donation",
@@ -62,22 +83,42 @@ const router = createBrowserRouter([
           {
             path: "money",
             element: <MoneyDonationPage />,
+            loader: async () => {
+              const response = await fetch(API_BASE_URL + "Fundraising");
+              if (!response.ok) {
+              } else {
+                const resData = await response.json();
+                return resData;
+              }
+            },
           },
           {
             path: "products",
             element: <ProductsPage />,
-          },
-          {
-            path: "cart",
-            element: <DonationCartPage />,
-          },
-          {
-            path: "payment",
-            element: <PaymentPage />,
+            loader: async () => {
+              const response = await fetch(API_BASE_URL + "Product");
+              if (!response.ok) {
+              } else {
+                const resData = await response.json();
+                return resData;
+              }
+            },
           },
         ],
       },
+      {
+        path: "cart",
+        element: <DonationCartPage />,
+      },
+      {
+        path: "payment",
+        element: <PaymentPage />,
+      },
     ],
+  },
+  {
+    path: "/logout",
+    action: logout,
   },
 ]);
 

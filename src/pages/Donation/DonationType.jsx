@@ -28,15 +28,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const firstChildVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-};
-
 const DonationTypePage = () => {
   return (
     <motion.section
@@ -49,11 +40,11 @@ const DonationTypePage = () => {
       <h2>DONATE</h2>
       <h3>Support Us as You Please</h3>
       <div className="donation--types">
-        <motion.div variants={itemVariants} class="donation-type-card">
-          <div class="donation-type-front donation-type-front-1">
+        <motion.div variants={itemVariants} className="donation-type-card">
+          <div className="donation-type-front donation-type-front-1">
             <h3>Donate Money</h3>
           </div>
-          <div class="donation-type-back">
+          <div className="donation-type-back">
             <h3>Donate Money</h3>
             <p>
               Your monetary donation directly aids those affected by the crisis
@@ -65,11 +56,11 @@ const DonationTypePage = () => {
             </Link>
           </div>
         </motion.div>
-        <motion.div class="donation-type-card" variants={itemVariants}>
-          <div class="donation-type-front donation-type-front-2">
+        <motion.div className="donation-type-card" variants={itemVariants}>
+          <div className="donation-type-front donation-type-front-2">
             <h3>Donate Products</h3>
           </div>
-          <div class="donation-type-back">
+          <div className="donation-type-back">
             <h3>Donate Products</h3>
             <p>
               Your generous donations of essential products are vital for the

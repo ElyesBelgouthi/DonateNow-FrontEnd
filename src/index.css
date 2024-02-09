@@ -140,9 +140,6 @@ a:focus {
   text-decoration: none;
 }
 
-.login-btn--container {
-}
-
 /* MainNavigation */
 
 .nav--header {
@@ -526,6 +523,11 @@ a:focus {
   font-size: small;
 }
 
+.pcard--delete:hover {
+  color: red;
+  scale: 1.1;
+}
+
 .pcard--delete {
   position: absolute;
   font-size: 25px;
@@ -752,12 +754,7 @@ a:focus {
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-size: contain;
-  background: linear-gradient(
-      to top left,
-      rgba(0, 0, 0, 5),
-      rgba(84, 21, 21, 0)
-    ),
-    url(./assets/proddonation.jpg);
+
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -850,8 +847,6 @@ a:focus {
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-size: contain;
-  background: linear-gradient(to top, rgba(0, 0, 0, 5), rgba(84, 21, 21, 0)),
-    url(./assets/proddonation.jpg);
   background-size: cover;
   background-position: center center;
   display: flex;
@@ -886,11 +881,11 @@ a:focus {
   font-family: inherit;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 25%;
+  width: 20%;
   height: 40px;
   font-size: 20px;
   position: absolute;
-  right: 100px;
+  right: 80px;
 }
 
 .modal-icon {

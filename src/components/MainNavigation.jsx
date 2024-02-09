@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Form, Link, NavLink, useRouteLoaderData } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import logo from "../assets/logo.png";
@@ -32,6 +32,7 @@ const hoverElements = {
 };
 
 const MainNavigation = () => {
+  const token = useRouteLoaderData("root");
   return (
     <motion.header className="nav--header">
       <div className="logo--div">
@@ -79,11 +80,28 @@ const MainNavigation = () => {
               DONATION
             </NavLink>
           </motion.li>
+          {token && (
+            <motion.li variants={hoverElements} whileHover="hover">
+              <NavLink
+                to="/cart"
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+              >
+                CART
+              </NavLink>
+            </motion.li>
+          )}
         </motion.ul>
       </nav>
-      <Link to="auth/signup" className="login-btn--container">
-        <LoginButton>Connect</LoginButton>
-      </Link>
+      {!token && (
+        <Link to="auth/signup" className="login-btn--container">
+          <LoginButton>Connect</LoginButton>
+        </Link>
+      )}
+      {token && (
+        <Form action="/logout" method="post" className="login-btn--container">
+          <LoginButton>Logout </LoginButton>
+        </Form>
+      )}
     </motion.header>
   );
 };
