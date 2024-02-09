@@ -895,3 +895,113 @@ a:focus {
   font-size: 25px;
   cursor: pointer;
 }
+
+/* CheckoutForm.css */
+.checkout-form {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.StripeElement {
+  font-family: inherit;
+  background-color: white;
+  padding: 16px 14px;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.StripeElement--focus {
+  border-color: #80b9f9;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.checkout-form button {
+  background-color: #556cd6;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkout-form button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.checkout-form button:hover:not(:disabled) {
+  background-color: #4453b5;
+}
+
+/* PaymentReceipt.css */
+.payment-receipt {
+  font-family: inherit;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.receipt-details {
+  padding: 20px;
+}
+
+.receipt-title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.item-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.item-value {
+  color: #222;
+  font-weight: 600;
+}
+
+.bigger {
+  font-size: 26px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #eaeaea;
+  margin: 20px 0;
+}

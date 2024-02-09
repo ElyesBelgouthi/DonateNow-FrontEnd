@@ -67,6 +67,18 @@ const DonationCartPage = () => {
   );
   const total = totalProductPrice + totalMoneyDonated;
 
+  const handleGoToPay = () => {
+    if (totalFundingOps > 0 || totalItems > 0)
+      localStorage.setItem(
+        "Totals",
+        JSON.stringify({
+          total,
+          totalMoneyDonated,
+          totalProductPrice,
+        })
+      );
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -120,7 +132,11 @@ const DonationCartPage = () => {
             Total:<span>${total}</span>
           </h3>
           <Link to="/payment">
-            <motion.h4 whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+            <motion.h4
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleGoToPay}
+            >
               Proceed to Pay <FontAwesomeIcon icon={faCoins} />
             </motion.h4>
           </Link>
