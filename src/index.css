@@ -20,13 +20,84 @@ body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #757575; /* Color of the scrollbar handle */
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Color of the scrollbar track */
+  border-radius: 8px;
+}
+
+/* Right margin for a centered appearance */
+::-webkit-scrollbar-corner {
+  background-color: #f5f5f5; /* Color of the scrollbar corner (when both vertical and horizontal) */
+  display: none; /* Hide the scrollbar corner */
+}
+
 .root--layout {
   height: 100vh;
   width: 100vw;
   background: url(../src/assets/bg.jpg);
   background-position-y: center;
   background-size: cover;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.main--root {
+  margin-top: 90px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 90px);
+}
+
+.connection--root--layout {
+  height: 100vh;
+  width: 100vw;
+  background: url(../src/assets/bg2.jpg);
+  background-position-y: center;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.connection--main--root {
+  position: absolute;
+  right: 0;
+  width: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  background: rgba(5, 5, 54, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }
 
 .button--1 {
@@ -43,20 +114,47 @@ body {
   margin-top: 30px;
 }
 
+.button--2 {
+  display: inline-block;
+  padding: 11px 30px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #242424;
+  border: 2px solid #242424;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-btn {
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
 /* MainNavigation */
 
 .nav--header {
   height: 80px;
   width: 100%;
+  position: fixed;
   padding: 10px 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .logo--div {
   height: 80px;
-  width: 140px;
+  width: 120px;
   cursor: pointer;
 }
 
@@ -78,6 +176,11 @@ body {
   color: rgba(255, 255, 255, 0.87);
 }
 
+.nav--header a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
 .nav--header a.active {
   color: rgba(255, 255, 255, 0.87);
   text-decoration: underline;
@@ -89,7 +192,7 @@ body {
   cursor: pointer;
 }
 
-.ham--div {
+.connection--div {
   font-size: 25px;
   height: 40px;
   width: 40px;
@@ -121,14 +224,43 @@ body {
 
 /* Home Page */
 .main--section {
-  height: 720px;
-  width: 720px;
-  margin-left: 150px;
+  width: 100%;
+  height: 90%;
+  padding-left: 150px;
+  margin-top: 50px;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.text--content {
+  max-width: 50%;
+  max-height: 100%;
+}
+
+.image--content {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  margin-right: 80px;
+}
+
+.image--content img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  margin-right: 150px;
   margin-top: 50px;
 }
 
 .main--section--smaller {
-  margin-top: 100px;
+  width: 100%;
+  padding-left: 150px;
+  height: 90%;
+  margin-top: 60px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
 }
 
 .home--title h2 {
@@ -155,5 +287,721 @@ body {
 
 .collaborators--section {
   width: 100%;
-  margin: 30px auto 40px;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.collaborators--section h2 {
+  margin: 0 auto;
+  font-size: 50px;
+}
+
+.collaborators--items {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.collaborators--item {
+  flex: 1 0 calc(25% - 20px);
+  max-width: calc(25% - 90px);
+  width: 300px;
+}
+
+.collaborators--item img {
+  cursor: grab;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Card Styling */
+.card--container {
+  width: 250px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: grab;
+}
+
+.card--image {
+  width: 250px;
+  height: 50%;
+}
+
+.card--image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card--text {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.card--text h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.card--text p {
+  margin: 10px 0;
+  font-size: 1em;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card--price {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #555;
+  text-align: right;
+}
+
+.card--adding {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card--adding input {
+  appearance: none;
+  text-align: center;
+  border: 1px solid #ddd;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: 700;
+  width: 50px;
+  height: 30px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card--adding input:focus {
+  border-color: #1a405a;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.products--categories ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 25px;
+}
+
+.products--categories li {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.products--categories li.active {
+  background-color: #7d695a;
+  color: #fff;
+  border: 1px solid #ccc;
+}
+/* Signup.css */
+.signup-content {
+  padding-top: 90px;
+  text-align: center;
+  width: 100%;
+}
+
+.signup-form {
+  padding: 40px 0;
+  color: #ccc;
+  text-align: left;
+}
+
+.signup-form h2 {
+  margin-bottom: 20px;
+}
+
+.connection--btn--container {
+  text-align: center;
+}
+
+.connection--change--method {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.connection--change--method a:hover {
+  color: #f8d743;
+}
+
+.form-group {
+  padding-left: 80px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-control {
+  display: block;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.pcard--container {
+  padding: 10px auto;
+  width: 600px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  color: #242424;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  background: #dcdce0;
+  box-shadow: 9px 9px 12px #b9b9bc;
+}
+
+.pcard--image {
+  height: 90px;
+  width: 90px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.pcard--image-content {
+  border-radius: 20px;
+}
+
+.pcard--total {
+  position: absolute;
+  left: 400px;
+  font-size: 20px;
+}
+
+.pcard--adding {
+  position: absolute;
+  left: 300px;
+  margin-top: -10px;
+}
+
+.pcard--text {
+  position: absolute;
+  left: 120px;
+}
+
+.pcard--text h3 {
+  margin: 2px 0 -10px;
+}
+
+.pcard--text p {
+  font-size: small;
+}
+
+.pcard--delete:hover {
+  color: red;
+  scale: 1.1;
+}
+
+.pcard--delete {
+  position: absolute;
+  font-size: 25px;
+  right: 45px;
+  cursor: pointer;
+}
+
+.payment--container {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #242424;
+
+  width: 90vw;
+  margin: 20px auto;
+  padding: 10px 20px;
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+}
+
+.order--details {
+  padding-left: 20px;
+  width: 45%;
+  height: 540px;
+}
+
+.order--products {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  overflow-x: visible;
+  height: 300px;
+}
+
+.order--subtotals {
+  padding: 10px 20px;
+}
+
+.order--subtotals h3 {
+  position: relative;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.order--subtotals span {
+  position: absolute;
+  right: 0;
+  font-size: 25px;
+}
+
+.order--total {
+  color: #ccc;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.order--total h3 {
+  height: 60px;
+  background: linear-gradient(to top left, rgb(47, 137, 160), rgb(45, 34, 107));
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  font-size: 35px;
+  position: relative;
+  width: 90%;
+  padding: 10px 10px;
+}
+
+.order--total span {
+  font-size: 35px;
+  position: absolute;
+  right: 20px;
+}
+
+.order--total h4 {
+  background: linear-gradient(to top left, rgb(47, 137, 160), rgb(45, 34, 107));
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  font-size: 20px;
+  height: 60px;
+
+  padding: 10px 10px;
+  text-align: center;
+}
+
+/* Donation Types Page */
+.donation--types {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  padding-right: 60px;
+}
+
+.donation-type-card {
+  width: 32%;
+  height: 320px;
+  perspective: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.donation-type-card div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.8s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.donation-type-front {
+  transform-style: preserve-3d;
+}
+
+.donation-type-back {
+  transform: rotateY(180deg);
+}
+
+.donation-type-card:hover .donation-type-front {
+  transform: rotateY(-180deg);
+}
+
+.donation-type-card:hover .donation-type-back {
+  transform: rotateY(0deg);
+}
+
+.donation-type-front-1 {
+  background-size: contain;
+  background: linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 5),
+      rgba(84, 21, 21, 0)
+    ),
+    url(./assets/money.jpg);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.donation-type-front-2 {
+  background-size: contain;
+  background: linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 5),
+      rgba(84, 21, 21, 0)
+    ),
+    url(./assets/proddonation.jpg);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.donation-type-back {
+  background: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 5),
+    rgba(84, 21, 21, 0)
+  );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+}
+
+.donation-type-front h3 {
+  font-size: 40px;
+}
+
+.donation-type-back h3 {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 40px;
+  color: #67f1fa;
+}
+
+.donation-type-back p {
+  position: absolute;
+  text-align: left;
+  top: 35%;
+  left: 20px;
+  margin-right: 40px;
+  font-size: 18px;
+}
+
+.donation--type--btn {
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+}
+
+/* Money Donation Card */
+
+.money-donation-card {
+  width: 100%;
+  min-width: 450px;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: contain;
+
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+  text-align: left;
+  padding: 20px;
+  cursor: pointer;
+}
+.money-donation-card--text {
+  width: 100%;
+}
+
+.money-donation-card h3 {
+  font-size: 24px;
+  margin-bottom: -10px;
+}
+
+.money-donation-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+}
+
+.money-donation-card-content p:last-child {
+  font-size: 14px;
+}
+
+.money--donation--cards--container {
+  width: 100%;
+  padding: 40px 30px 70px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 130px;
+  justify-content: center;
+}
+
+.money--donation--card--container {
+  width: 55%;
+  margin-right: 40px;
+}
+
+/* Money Donation Modal */
+
+.modal--container {
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 99;
+  background: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 5),
+    rgba(84, 21, 21, 0)
+  );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  overflow: visible;
+}
+
+.money--donation--modal {
+  overflow: visible;
+  border-radius: 10px 10px 0 0;
+  height: 660px;
+  width: 460px;
+  margin: 30px auto;
+  background-color: rgb(10, 5, 20);
+}
+
+.money--donation--modal--top {
+  width: 420px;
+  height: 210px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: contain;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  text-align: right;
+  padding: 20px;
+  position: relative;
+}
+
+.money--donation--modal--bot {
+  height: 100%;
+  width: 420px;
+  padding: 0 30px 0 26px;
+}
+
+#input-example {
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  height: 40px;
+  font-size: 40px;
+}
+
+#input-card {
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 20%;
+  height: 40px;
+  font-size: 20px;
+  position: absolute;
+  right: 80px;
+}
+
+.modal-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* CheckoutForm.css */
+.checkout-form {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.StripeElement {
+  font-family: inherit;
+  background-color: white;
+  padding: 16px 14px;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.StripeElement--focus {
+  border-color: #80b9f9;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.checkout-form button {
+  background-color: #556cd6;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkout-form button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.checkout-form button:hover:not(:disabled) {
+  background-color: #4453b5;
+}
+
+/* PaymentReceipt.css */
+.payment-receipt {
+  font-family: inherit;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.receipt-details {
+  padding: 20px;
+}
+
+.receipt-title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.item-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.item-value {
+  color: #222;
+  font-weight: 600;
+}
+
+.bigger {
+  font-size: 26px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #eaeaea;
+  margin: 20px 0;
 }

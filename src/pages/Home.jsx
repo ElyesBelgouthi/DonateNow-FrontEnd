@@ -1,25 +1,75 @@
+import { motion } from "framer-motion";
+
 import Button from "../UI/Button";
+import Flag from "../UI/Flag";
+import { Link } from "react-router-dom";
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.55,
+      when: "beforeChildren",
+      staggerChildren: 0.8,
+    },
+  },
+  exit: {
+    x: "-100vw",
+    transition: { ease: "easeInOut" },
+  },
+};
+
+const firstChildVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
 const HomePage = () => {
   return (
-    <section className="main--section">
-      <div className="home--title">
-        <h1>
-          <span>SAVE</span>
-          <span>PALESTINE</span>
-        </h1>
-      </div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="main--section"
+    >
+      <div className="text--content">
+        <div className="home--title">
+          <h1>
+            <span>SAVE</span>
+            <span>PALESTINE</span>
+          </h1>
+        </div>
 
-      <p className="home--description">
-        By contributing to reputable organizations or initiatives that provide
-        aid, medical supplies, and support to those in need, you can help bring
-        hope and assistance to the people of Palestine who have endured
-        longstanding hardships.
-      </p>
-      <Button type="button" className="button--1">
-        Donate
-      </Button>
-    </section>
+        <motion.p className="home--description" variants={firstChildVariants}>
+          By contributing to reputable organizations or initiatives that provide
+          aid, medical supplies, and support to those in need, you can help
+          bring hope and assistance to the people of Palestine who have endured
+          longstanding hardships.
+        </motion.p>
+        <motion.div variants={firstChildVariants}>
+          <Link to="/donation">
+            <Button type="button" className="button--1">
+              Donate
+            </Button>
+          </Link>
+        </motion.div>
+      </div>
+      <div className="image--content">
+        <Flag />
+      </div>
+    </motion.div>
   );
 };
 

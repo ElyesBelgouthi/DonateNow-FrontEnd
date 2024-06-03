@@ -11,14 +11,14 @@ const buttonVariants = {
   },
 };
 
-const Button = (props) => {
+const LoginButton = (props) => {
   return (
     <motion.button
       variants={buttonVariants}
       whileHover="hover"
       type={props.type}
       onClick={props.onClick}
-      className="button--1"
+      className="login-btn"
       style={{ color: props.color }}
     >
       {props.children}
@@ -26,4 +26,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default LoginButton;
